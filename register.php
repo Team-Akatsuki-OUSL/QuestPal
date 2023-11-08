@@ -1,23 +1,22 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/bootstrap.min.css">
-  <script src="../js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
   <title>Register</title>
 </head>
 
-<body style="background-image: url('../images/login.jpg'); background-size:cover; min-height: 100vh; overflow:hidden">
+<body style="background-image: url('images/login.jpg'); background-size:cover; min-height: 100vh; overflow:hidden">
   <div class="container mt-4" >
     <div class="col-md-8 col-sm-12 col-xl-6 col-xxl-5 d-block mx-auto border border-2 p-4 "style="background-color: rgba(255,255,255,.5);">
       <div class="head mb-4">
-        <img src="../images/image.png" class="d-block mx-auto" width="75px" alt="">
+        <img src="images/image.png" class="d-block mx-auto" width="75px" alt="">
         <h2 class="text-center">QuestPal</h2>
       </div>
-      <form method="POST" action="registration.php">
+      <form method="POST" action="registrationHelper.php">
         <?php if (isset($_GET['error'])) { ?>
 
           <p class="error w-100 text-bg-danger" style="padding: 10px 25px; "><?php echo $_GET['error']; ?></p>
@@ -54,7 +53,7 @@
         </div>
         <button type="submit" class="btn btn-success d-block mx-auto">Register</button>
       </form>
-      <h6 class="text-center mt-3">Already a member? <div class="text-Success"><a href="index.php" style="cursor: pointer;">Login</a></div>
+      <h6 class="text-center mt-3">Already a member? <div class="text-Success"><a href="login.php" style="cursor: pointer;">Login</a></div>
       </h6>
     </div>
 

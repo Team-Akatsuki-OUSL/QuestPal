@@ -16,7 +16,7 @@
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
-  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="css/index.css">
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/45bc3685e3.js" crossorigin="anonymous"></script>
 </head>
@@ -47,9 +47,9 @@
               <a class="nav-link" href="#sec3">Contact Us</a>
             </li>
 
-            <a href="php/index.php" style="margin-top: 3px;" class="navbutton"><button type="button"
+            <a href="login.php" style="margin-top: 3px;" class="navbutton"><button type="button"
                 class="btn btn-warning  ms-0 ">Sign In</button></a>
-            <a href="php/register.php" style="margin-top: 3px;" class="navbutton"><button type="button"
+            <a href="register.php" style="margin-top: 3px;" class="navbutton"><button type="button"
                 class="btn btn-dark ms-0 ">Get Started</button></a>
           </ul>
         </div>

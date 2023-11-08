@@ -15,10 +15,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $uname = validate($_POST['username']);
     $pass = validate($_POST['password']);
     if (empty($uname)) {
-        header("Location: index.php?error=User Name is required");
+        header("Location: login.php?error=User Name is required");
         exit();
     } else if (empty($pass)) {
-        header("Location: index.php?error=Password is required");
+        header("Location: login.php?error=Password is required");
         exit();
     } else {
         $sql = "SELECT * FROM users WHERE username='$uname' AND password='$pass'";
@@ -36,6 +36,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 $_SESSION['username'] = $row['username'];
 
                 $_SESSION['fname'] = $row['first_name'];
+                $_SESSION['lname'] = $row['last_name'];
     
 
                 header("Location: dashboard.php");
@@ -43,20 +44,20 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 exit();
             } else {
 
-                header("Location: index.php?error=Incorect User name or password");
+                header("Location: login.php?error=Incorect User name or password");
 
                 exit();
             }
         } else {
 
-            header("Location: index.php?error=Incorect User name or password");
+            header("Location: login.php?error=Incorect User name or password");
 
             exit();
         }
     }
 } else {
 
-    header("Location: index.php");
+    header("Location: login.php");
 
     exit();
 }
