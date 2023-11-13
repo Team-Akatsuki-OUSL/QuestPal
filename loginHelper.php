@@ -32,6 +32,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if ($row['username'] == $uname && $row['password'] == $pass) {
 
                 echo "Logged in!";
+                
 
                 $_SESSION['username'] = $row['username'];
 
