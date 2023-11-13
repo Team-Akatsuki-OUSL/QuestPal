@@ -32,15 +32,21 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL
+  `last_name` varchar(50) NOT NULL,
+  'contact_number' varchar(15) NOT NULL,
+  'postal_address' varchar(100) NOT NULL,
+  'nic' varchar(15) NOT NULL,
+  'occupation' varchar(50) NOT NULL,
+  'gender' varchar(10) NOT NULL,
+  'dob' varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `email`, `first_name`, `last_name`) VALUES
-('lak', '123', 'lakshan.idx@gmail.com', 'Lakshan', 'Gunasekara');
+INSERT INTO `users` (`username`, `password`, `email`, `first_name`, `last_name`, 'contact_number', 'postal_address' , 'nic' , 'occupation' , 'gender' , 'dob') VALUES
+('lak', '123', 'lakshan.idx@gmail.com', 'Lakshan', 'Gunasekara', '235435667', 'dvafshbsns', '3453556346', 'sdgRSBS', 'Male', '12/24/3456');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

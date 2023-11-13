@@ -42,6 +42,43 @@
           <label for="floatingInput">Email address</label>
         </div>
         <div class="row g-2">
+          
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="contactNumber" placeholder="name@example.com">
+          <label for="floatingInput">Contact Number</label>
+        </div>
+        <div class="row g-2">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="postalAddress" placeholder="name@example.com">
+          <label for="floatingInput">Postal Address</label>
+        </div>
+        <div class="row g-2">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="nic" placeholder="name@example.com">
+          <label for="floatingInput">NIC (National Identity Card)</label>
+        </div>
+        <div class="row g-2">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="occupation" placeholder="name@example.com">
+          <label for="floatingInput">Occupation</label>
+        </div>
+        <div class="row g-2">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="gender" placeholder="name@example.com">
+          <label for="floatingInput">Gender</label>
+        </div>
+        <div class="row g-2">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="dob" placeholder="name@example.com">
+          <label for="floatingInput">Date of Birth</label>
+        </div>
+        <div class="row g-2">
+
 
           <div class="col form-floating mb-3">
             <input type="password" class="form-control" id="floatingInput" name="password" placeholder="name@example.com">
