@@ -9,7 +9,7 @@
   <title>Register</title>
 </head>
 
-<body style="background-image: url('images/login.jpg'); background-size:cover; min-height: 100vh; overflow:hidden">
+<body style="background-image: url('images/login.jpg'); background-size:cover; min-height: 100vh; overflow:scroll">
   <div class="container mt-4" >
     <div class="col-md-8 col-sm-12 col-xl-6 col-xxl-5 d-block mx-auto border border-2 p-4 "style="background-color: rgba(255,255,255,.5);">
       <div class="head mb-4">
@@ -54,7 +54,7 @@
           <label for="floatingInput">NIC</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" name="occupation" placeholder="name@example.com">
+          <input type="text" class="form-control" id="floatingInput" name="Occupation" placeholder="name@example.com">
           <label for="floatingInput">occupation</label>
         </div>
         <div class="form-floating mb-3">
