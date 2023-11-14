@@ -40,6 +40,32 @@
           <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
           <label for="floatingInput">Email address</label>
         </div>
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="contactNumber" placeholder="name@example.com">
+          <label for="floatingInput">Contact Number</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="postalAddress" placeholder="name@example.com">
+          <label for="floatingInput">Postal Address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="nic" placeholder="name@example.com">
+          <label for="floatingInput">NIC</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="occupation" placeholder="name@example.com">
+          <label for="floatingInput">occupation</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="gender" placeholder="name@example.com">
+          <label for="floatingInput">Gender</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" name="dob" placeholder="name@example.com">
+          <label for="floatingInput">dob</label>
+        </div>
+
         <div class="row g-2">
 
           <div class="col form-floating mb-3">
