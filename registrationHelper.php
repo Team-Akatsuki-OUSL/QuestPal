@@ -8,6 +8,13 @@ $uname = $_POST['username'];
 $pass = $_POST['password'];
 $confpass = $_POST['confirmpassword'];
 $email = $_POST['email'];
+$contactNumber = $_POST['contactNumber'];
+$postalAddress = $_POST['postalAddress'];
+$nic = $_POST['nic'];
+$occupation = $_POST['occupation'];
+$gender = $_POST['gender'];
+$dob = $_POST['dob'];
+
 
 if (empty($fname)) {
     header("Location: register.php?error=First name is required");
@@ -27,6 +34,24 @@ if (empty($fname)) {
 }else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header("Location: register.php?error=Not a valid email");
     exit();
+}else if (empty($contactNumber)) {
+    header("Location: register.php?error=contact Number is required");
+    exit();
+}else if (empty($postalAddress)) {
+    header("Location: register.php?error=postal Address is required");
+    exit();
+}else if (empty($occupation)) {
+    header("Location: register.php?error=occupation is required");
+    exit();
+}else if (empty($nic)) {
+    header("Location: register.php?error=nic is required");
+    exit();
+}else if (empty($gender)) {
+    header("Location: register.php?error=gender is required");
+    exit();
+}else if (empty($dob)) {
+    header("Location: register.php?error=Date of Birth is required");
+    exit();
 } else if (empty($pass)) {
     header("Location: register.php?error=Password is required");
     exit();
@@ -37,8 +62,8 @@ if (empty($fname)) {
     header("Location: register.php?error=Passwords are not same");
     exit();
 }else {
-    $sql = "INSERT into users (username, email, password, first_name, last_name) VALUES (
-        '$uname','$email','$pass','$fname','$lname'
+    $sql = "INSERT into users (username, email, password, first_name, last_name, contactNumber, postalAddress, nic, occupation, gender, dob) VALUES (
+        '$uname','$email','$pass','$fname','$lname', '$contactNumber', '$postalAddress', '$nic', '$occupation', '$gender', '$dob'
     );";
 
     mysqli_query($connect, $sql);
