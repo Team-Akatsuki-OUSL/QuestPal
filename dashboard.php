@@ -4,6 +4,11 @@ session_start();
 
 if (isset($_SESSION['username'])) {
 
+    include "db_connection.php";
+    $nic = "200116403146";
+    $sql = "SELECT request_id, title, category FROM requests WHERE requester_id='$nic'";
+    $result = $connect->query($sql);
+
 ?>
 
     <!DOCTYPE html>
@@ -62,7 +67,7 @@ if (isset($_SESSION['username'])) {
                             <span class="link-name">My Profile</span>
                         </a></li>
                     <li><a href="aboutUs.php">
-                    <i class="uil uil-exclamation-circle"></i>
+                            <i class="uil uil-exclamation-circle"></i>
                             <span class="link-name">About Us</span>
                         </a></li>
                 </ul>
@@ -93,7 +98,7 @@ if (isset($_SESSION['username'])) {
                         <div class="box box1">
                             <i class="uil uil-receipt"></i>
                             <span class="text">My Requests</span>
-                            <span class="number">0</span>
+                            <span class="number"><?php echo $result->num_rows ?></span>
                         </div>
                         <div class="box box2">
                             <i class="uil uil-dollar-sign"></i>
@@ -132,7 +137,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
                                 <div class="modal-body">
                                     <div class="container-fluid d-block mx-auto">
-                                        <form id="create-request" class="ms-4">
+                                        <form id="create-request" method="POST" action="createRequestHelper.php" class="ms-4">
                                             <div class="bg-white rounded p-3 input-group-lg ">
                                                 <!--Name-->
                                                 <div class="input-group mb-3 row">
@@ -195,24 +200,6 @@ if (isset($_SESSION['username'])) {
                                                     </select>
                                                 </div>
 
-                                                <!--Telphone number-->
-                                                <div class="input-group mb-3 row">
-                                                    <span class="input-group-text col-3" id="inputGroup-sizing-default">Telephone Number</span>
-                                                    <input type="text" class="form-control col-9" aria-label="Recipient's username" aria-describedby="button-addon2" name="telphone">
-                                                </div>
-
-                                                <!--email-->
-                                                <div class="input-group mb-3 row">
-                                                    <span class="input-group-text col-3" id="inputGroup-sizing-default">Email</span>
-                                                    <input type="text" class="form-control col-9" aria-label="Recipient's username" aria-describedby="button-addon2" name="email">
-                                                </div>
-
-                                                <!-- input file-->
-                                                <div class="input-group mb-3 row">
-                                                    <label class="input-group-text col-3" for="inputGroupFile02">Upload Files (If any)</label>
-                                                    <input type="file" class="form-control col-9" id="inputGroupFile02" name="documents">
-                                                </div>
-
                                             </div>
 
                                         </form>
@@ -222,7 +209,7 @@ if (isset($_SESSION['username'])) {
                                     <span><i class="uil uil-exclamation-triangle text-danger"> </i>Please check the entered information twice before submitting the form.</span>
                                     <div class="">
                                         <button id="btn-reset" form="create-request" type="reset" class="btn btn-secondary">Reset</button>
-                                        <button type="button" class="btn btn-primary ms-3">Submit</button>
+                                        <button form="create-request" type="submit" class="btn btn-primary ms-3">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -233,58 +220,35 @@ if (isset($_SESSION['username'])) {
                         <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="col-5">Name</th>
-                                    <th scope="col" class="col-4">Subject</th>
+                                    <th scope="col" class="col-2">Request ID</th>
+                                    <th scope="col" class="col-4">Title</th>
+                                    <th scope="col" class="col-3">Category</th>
                                     <th scope="col" class="col-3"></th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr>
-                                    <td>Kavishka Prasad</td>
-                                    <td>Rice</td>
-                                    <td>
-                                        <div class="">
-                                            <button class="btn btn-primary mx-2">View</button>
-                                            <button class="btn btn-success mx-2">Update</button>
-                                            <button class="btn btn-danger mx-2">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Asanka Madushanka</td>
-                                    <td>Medecine</td>
-                                    <td>
-                                        <div class="">
-                                            <button class="btn btn-primary mx-2">View</button>
-                                            <button class="btn btn-success mx-2">Update</button>
-                                            <button class="btn btn-danger mx-2">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Kavishka Prasad</td>
-                                    <td>Rice</td>
-                                    <td>
-                                        <div class="">
-                                            <button class="btn btn-primary mx-2">View</button>
-                                            <button class="btn btn-success mx-2">Update</button>
-                                            <button class="btn btn-danger mx-2">Delete</button>
-                                        </div>
-                                    </td>
+                                <?php
 
-                                </tr>
-                                <tr>
-                                    <td>Asanka Madushanka</td>
-                                    <td>Medecine</td>
-                                    <td>
-                                        <div class="">
-                                            <button class="btn btn-primary mx-2">View</button>
-                                            <button class="btn btn-success mx-2">Update</button>
-                                            <button class="btn btn-danger mx-2">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<tr>
+                                        <td>' . $row["request_id"] . '</td>
+                                        <td>' . $row["title"] . '</td>
+                                        <td>' . $row["category"] . '</td>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-primary mx-2"><a href="viewRequest.php?request_id=' . $row["request_id"] . '">View</a></button>
+                                                <button class="btn btn-success mx-2">Update</button>
+                                                <button class="btn btn-danger mx-2">Delete</button>
+                                            </div>
+                                        </td></tr>';
+                                    }
+                                } else {
+                                    echo '<tr><td colspan="4" class="text-center"><h6 class="my-5">No Results</h6></td></tr>';
+                                }
 
+                                ?>
                             </tbody>
                         </table>
 
@@ -300,47 +264,47 @@ if (isset($_SESSION['username'])) {
                     </div>
 
                     <div class="container mb-5">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Requester Name</th>
-                                        <th scope="col">Fulfilled Request</th>
-                                        <th scope="col">Amount (Rs.)</th>
-                                        <th scope="col">Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <tr>
-                                        <td>Kavishka Prasad</td>
-                                        <td>Rice</td>
-                                        <td>91,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Asanka Madushanka</td>
-                                        <td>Medecine</td>
-                                        <td>100,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kavishka Prasad</td>
-                                        <td>Rice</td>
-                                        <td>85,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Asanka Madushanka</td>
-                                        <td>Medecine</td>
-                                        <td>120,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Requester Name</th>
+                                    <th scope="col">Fulfilled Request</th>
+                                    <th scope="col">Amount (Rs.)</th>
+                                    <th scope="col">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>Kavishka Prasad</td>
+                                    <td>Rice</td>
+                                    <td>91,000.00</td>
+                                    <td>2023-11-11</td>
+                                </tr>
+                                <tr>
+                                    <td>Asanka Madushanka</td>
+                                    <td>Medecine</td>
+                                    <td>100,000.00</td>
+                                    <td>2023-11-11</td>
+                                </tr>
+                                <tr>
+                                    <td>Kavishka Prasad</td>
+                                    <td>Rice</td>
+                                    <td>85,000.00</td>
+                                    <td>2023-11-11</td>
+                                </tr>
+                                <tr>
+                                    <td>Asanka Madushanka</td>
+                                    <td>Medecine</td>
+                                    <td>120,000.00</td>
+                                    <td>2023-11-11</td>
+                                </tr>
 
-                                </tbody>
-                            </table>
-                            <!-- <div class="d-flex justify-content-end m-2">
+                            </tbody>
+                        </table>
+                        <!-- <div class="d-flex justify-content-end m-2">
               <button class="btn btn-secondary">View more results</button>
             </div> -->
-                        </div>
+                    </div>
                 </div>
             </div>
         </section>

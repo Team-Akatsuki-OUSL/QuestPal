@@ -6,8 +6,17 @@ if (isset($_SESSION['username'])) {
 
     include "db_connection.php";
     $nic = "200116403146";
-    $sql = "SELECT donation_id, CONCAT(first_name, ' ', last_name ) as name, title, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic";
+    $request_id = $_GET['request_id'];
+    $sql = "SELECT request_id, CONCAT(first_name, ' ', last_name ) as name, title, description, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic WHERE request_id=$request_id";
     $result = $connect->query($sql);
+    $row = $result->fetch_assoc();
+    
+    $request_id = $row["request_id"];
+    $name = $row["name"] ;
+    $title = $row["title"] ;
+    $description = $row["description"] ;
+    $district = $row["district"];
+    $category = $row["category"];
 
 
 ?>
@@ -18,7 +27,7 @@ if (isset($_SESSION['username'])) {
 
     <head>
 
-        <title>Donations</title>
+        <title>Requests</title>
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -31,8 +40,8 @@ if (isset($_SESSION['username'])) {
 
     </head>
 
-    <body style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/hnd.jpg');  background-size:cover; background-position: center; min-height: 100vh;">
-        <!--Go back button-->
+    <body >
+  
         <nav>
             <div class="logo-name">
                 <div class="logo-image">
@@ -85,8 +94,8 @@ if (isset($_SESSION['username'])) {
 
                 <div class="container m-3  d-block mx-auto">
                     <div class="d-flex justify-content-between align-items-center ">
-                        <h3>Donations </h3>
-                        <h6 class="mx-2">Number of Results: 0</h6>
+                        <h3><?php echo "Request #".$request_id." - ". $title  ?> </h3>
+                        <h6 class="mx-2"></h6>
                     </div>
                     <hr class="mt-2">
 
@@ -94,47 +103,24 @@ if (isset($_SESSION['username'])) {
                     <!-- Results table -->
                     <section>
 
-                        <div class=" pt-3">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Donator Name</th>
-                                        <th scope="col">Fulfilled Request</th>
-                                        <th scope="col">Amount (Rs.)</th>
-                                        <th scope="col">Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <tr>
-                                        <td>Kavishka Prasad</td>
-                                        <td>Rice</td>
-                                        <td>91,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Asanka Madushanka</td>
-                                        <td>Medecine</td>
-                                        <td>100,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kavishka Prasad</td>
-                                        <td>Rice</td>
-                                        <td>85,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Asanka Madushanka</td>
-                                        <td>Medecine</td>
-                                        <td>120,000.00</td>
-                                        <td>2023-11-11</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                            <!-- <div class="d-flex justify-content-end m-2">
-              <button class="btn btn-secondary">View more results</button>
-            </div> -->
+                        <div class="pt-3">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="m-2 p-4"> 
+                                        <p class="mb-2"><strong><?php echo $title ?></strong></p>
+                                        <p class="mb-4"><?php echo $title ?></p>
+                                        <p class="mb-2"><strong>Category: </strong><?php echo $category ?></p>
+                                        <p class="mb-2"><strong>District: </strong><?php echo $district ?></p>
+                                    </div>
+                                    <?php echo $description ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="m-2 p-4 text-bg-lignt border border-1 rounded rounded-3">
+                                        <h3 class="text-center mb-5">Contact Details</h3>
+                                        <p class="mb-1"><strong>Name: </strong> <?php echo $name; ?></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </section>
