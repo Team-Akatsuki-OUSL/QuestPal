@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0E4BF1;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0E4BF1;
+}
+
+body{
+    background-image: url('../images/login.jpg'); 
+    background-size:cover; 
+    height: 100vh; 
+}
+
+.logo-unit{
+    height: 100vh;
+}
+
+.form-fields{
+    overflow-y: scroll;
+}
+
+@media (max-width: 780px) {
+    .logo-unit{
+        margin: 20 px 0 25px 0;
+        height: fit-content;
+    }
+
+    .form-fields{
+        overflow: visible;
+    }
+}

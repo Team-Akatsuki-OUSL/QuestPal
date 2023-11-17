@@ -21,13 +21,13 @@ if (isset($_SESSION['username'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!----======== CSS ======== -->
-        <link rel="stylesheet" href="css/sidebar.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/bootstrap.bundle.min.js"></script>
 
         <!----===== Iconscout CSS ===== -->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <script src="tinymce/tinymce.min.js"></script>
+        <link rel="stylesheet" href="css/sidebar.css">
         <script>
             tinymce.init({
                 selector: '#desc',
@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
             });
         </script>
 
-        <title>Admin Dashboard Panel</title>
+        <title>Dashboard </title>
     </head>
 
     <body>
@@ -57,10 +57,6 @@ if (isset($_SESSION['username'])) {
                     <li><a href="requests.php">
                             <i class="uil uil-files-landscapes"></i>
                             <span class="link-name">Requests</span>
-                        </a></li>
-                    <li><a href="donations.php">
-                            <i class="uil uil-dollar-sign"></i>
-                            <span class="link-name">Donations</span>
                         </a></li>
                     <li><a href="myProfile.php">
                             <i class="uil uil-user-circle"></i>
@@ -94,21 +90,16 @@ if (isset($_SESSION['username'])) {
                         <span class="text">Dashboard</span>
                     </div>
 
-                    <div class="boxes">
-                        <div class="box box1">
-                            <i class="uil uil-receipt"></i>
-                            <span class="text">My Requests</span>
-                            <span class="number"><?php echo $result->num_rows ?></span>
-                        </div>
-                        <div class="box box2">
-                            <i class="uil uil-dollar-sign"></i>
-                            <span class="text">My Donations</span>
-                            <span class="number">0</span>
-                        </div>
-                        <div class="box box3">
+                    <div class="boxes ">
+                        <div class="box box2 mx-2">
                             <i class="uil uil-favorite"></i>
                             <span class="text">Favourites</span>
                             <span class="number">0</span>
+                        </div>
+                        <div class="box box1 mx-2">
+                            <i class="uil uil-receipt"></i>
+                            <span class="text">My Requests</span>
+                            <span class="number"><?php echo $result->num_rows ?></span>
                         </div>
                     </div>
                 </div>
@@ -254,57 +245,6 @@ if (isset($_SESSION['username'])) {
 
                     </div>
 
-                    <div class="title">
-                        <div class="d-flex justify-content-between w-100 mt-4">
-                            <div class="d-flex align-items-center">
-                                <i class="uil uil-dollar-sign"></i>
-                                <span class="text">My Donations</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="container mb-5">
-                        <table class="table table-hover align-middle">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Requester Name</th>
-                                    <th scope="col">Fulfilled Request</th>
-                                    <th scope="col">Amount (Rs.)</th>
-                                    <th scope="col">Date</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <tr>
-                                    <td>Kavishka Prasad</td>
-                                    <td>Rice</td>
-                                    <td>91,000.00</td>
-                                    <td>2023-11-11</td>
-                                </tr>
-                                <tr>
-                                    <td>Asanka Madushanka</td>
-                                    <td>Medecine</td>
-                                    <td>100,000.00</td>
-                                    <td>2023-11-11</td>
-                                </tr>
-                                <tr>
-                                    <td>Kavishka Prasad</td>
-                                    <td>Rice</td>
-                                    <td>85,000.00</td>
-                                    <td>2023-11-11</td>
-                                </tr>
-                                <tr>
-                                    <td>Asanka Madushanka</td>
-                                    <td>Medecine</td>
-                                    <td>120,000.00</td>
-                                    <td>2023-11-11</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                        <!-- <div class="d-flex justify-content-end m-2">
-              <button class="btn btn-secondary">View more results</button>
-            </div> -->
-                    </div>
                 </div>
             </div>
         </section>

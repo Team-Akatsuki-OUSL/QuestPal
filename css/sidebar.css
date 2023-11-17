@@ -71,7 +71,7 @@ nav{
     height: 100%;
     width: 250px;
     padding: 10px 14px;
-    background-color: var(--panel-color);
+    background-color: rgba(255, 255, 255, 0.982);
     border-right: 1px solid var(--border-color);
     transition: var(--tran-05);
 }
@@ -206,7 +206,10 @@ body.dark .switch:before{
 .dashboard{
     position: relative;
     left: 250px;
-    background-color: var(--panel-color);
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.954),rgba(255, 255, 255, 0.950)), url("../images/bg.webp");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     min-height: 100vh;
     width: calc(100% - 250px);
     padding: 10px 14px;
@@ -225,7 +228,7 @@ nav.close ~ .dashboard{
     justify-content: space-between;
     align-items: center;
     padding: 10px 14px;
-    background-color: var(--panel-color);
+    background-color: rgba(255, 255, 255, 0);
     transition: var(--tran-05);
     z-index: 10;
 }
@@ -301,12 +304,14 @@ nav.close ~ .dashboard .top{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .dash-content .boxes .box{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     border-radius: 12px;
     width: calc(100% / 3 - 15px);
     padding: 15px 20px;
@@ -328,10 +333,9 @@ nav.close ~ .dashboard .top{
     font-weight: 500;
     color: var(--text-color);
 }
+
 .boxes .box.box2{
-    background-color: var(--box2-color);
-}
-.boxes .box.box3{
+    width: calc(100% / 2 - 15px);
     background-color: var(--box3-color);
 }
 .dash-content .activity .activity-data{
@@ -408,7 +412,7 @@ nav.close ~ .dashboard .top{
 @media (max-width: 780px) {
     .dash-content .boxes .box{
         width: calc(100% / 2 - 15px);
-        margin-top: 15px;
+        margin-top: 15px; 
     }
 }
 @media (max-width: 560px) {
