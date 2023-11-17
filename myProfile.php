@@ -46,10 +46,6 @@ if (isset($_SESSION['username'])) {
               <i class="uil uil-files-landscapes"></i>
               <span class="link-name">Requests</span>
             </a></li>
-          <li><a href="donations.php">
-              <i class="uil uil-dollar-sign"></i>
-              <span class="link-name">Donations</span>
-            </a></li>
           <li><a href="myProfile.php">
               <i class="uil uil-user-circle"></i>
               <span class="link-name">My Profile</span>

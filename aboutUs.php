@@ -46,10 +46,6 @@ if (isset($_SESSION['username'])) {
                             <i class="uil uil-files-landscapes"></i>
                             <span class="link-name">Requests</span>
                         </a></li>
-                    <li><a href="donations.php">
-                            <i class="uil uil-dollar-sign"></i>
-                            <span class="link-name">Donations</span>
-                        </a></li>
                     <li><a href="myProfile.php">
                             <i class="uil uil-user-circle"></i>
                             <span class="link-name">My Profile</span>
@@ -174,9 +170,9 @@ if (isset($_SESSION['username'])) {
                             </div>
                         </div>
                     </section>
-                    <hr class="mt-5">
+                    <hr class="mt-5 mb-3">
 
-                    <section class="footer text-bg-primary bg-white text-black">
+                    <section class="footer  text-black">
                         <div class="d-flex justify-content-center">
                             <div class="text-center mt-3">
 

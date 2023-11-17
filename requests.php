@@ -4,6 +4,11 @@ session_start();
 
 if (isset($_SESSION['username'])) {
 
+  include "db_connection.php";
+  $nic = "200116403146";
+  $sql = "SELECT request_id, CONCAT(first_name, ' ', last_name ) as name, title, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic";
+  $result = $connect->query($sql);
+
 ?>
 
   <!DOCTYPE html>
@@ -46,10 +51,6 @@ if (isset($_SESSION['username'])) {
               <i class="uil uil-files-landscapes"></i>
               <span class="link-name">Requests</span>
             </a></li>
-          <li><a href="donations.php">
-              <i class="uil uil-dollar-sign"></i>
-              <span class="link-name">Donations</span>
-            </a></li>
           <li><a href="myProfile.php">
               <i class="uil uil-user-circle"></i>
               <span class="link-name">My Profile</span>
@@ -90,6 +91,7 @@ if (isset($_SESSION['username'])) {
                     <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect01">District</label>
                       <select class="form-select" id="inputGroupSelect01" name="district">
+                      <option value="" selected disabled hidden>Select</option>
                         <option value="Colombo">Colombo</option>
                         <option value="Gampaha">Gampaha</option>
                         <option value="Kalutara">Kalutara</option>
@@ -125,6 +127,7 @@ if (isset($_SESSION['username'])) {
                     <div class="input-group mb-3">
                       <label class="input-group-text" for="inputGroupSelect01">Category</label>
                       <select class="form-select" id="inputGroupSelect01" name="category">
+                      <option value="" selected disabled hidden>Select</option>
                         <option value="Health">Health</option>
                         <option value="Education">Education</option>
                         <option value="Transport">Transport</option>
@@ -160,12 +163,13 @@ if (isset($_SESSION['username'])) {
               <div class="d-flex justify-content-between p-2 ">
 
                 <h5 class="mx-2"></h5>
-                <h6 class="mx-2">Number of Results: 0</h6>
+                <h6 class="mx-2">Number of Results: <?php echo $result->num_rows;?></h6>
               </div>
             </div>
             <table class="table table-hover align-middle">
               <thead>
                 <tr>
+                  <th scope="col" class="col">Request ID</th>
                   <th scope="col" class="col">Name</th>
                   <th scope="col" class="col">Request</th>
                   <th scope="col" class="col">District</th>
@@ -174,35 +178,28 @@ if (isset($_SESSION['username'])) {
                 </tr>
               </thead>
               <tbody class="table-group-divider">
-                <tr>
-                  <td>Kavishka Prasad</td>
-                  <td>Rice</td>
-                  <td>Bhojpur</td>
-                  <td>Agriculture</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-                <tr>
-                  <td>Asanka Madushanka</td>
-                  <td>Medecine</td>
-                  <td>Pokhara</td>
-                  <td>Healthcare</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-                <tr>
-                  <td>Sanduni Perera</td>
-                  <td>Food</td>
-                  <td>Bhojpur</td>
-                  <td>Agriculture</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-                <tr>
-                  <td>Lakshman Kumawat</td>
-                  <td>Water</td>
-                  <td>Pokhara</td>
-                  <td>Healthcare</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
+                <?php
 
+                if ($result->num_rows > 0) {
+                  // output data of each row
+                  while ($row = $result->fetch_assoc()) {
+                    echo '<tr>
+                                        <td>' . $row["request_id"] . '</td>
+                                        <td>' . $row["name"] . '</td>
+                                        <td>' . $row["title"] . '</td>
+                                        <td>' . $row["district"] . '</td>
+                                        <td>' . $row["category"] . '</td>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-primary mx-2"><a href="viewRequest.php?request_id='.$row["request_id"].'">View</a></button>
+                                            </div>
+                                        </td></tr>';
+                  }
+                } else {
+                  echo '<tr><td colspan="6" class="text-center"><h6 class="my-5">No Results</h6></td></tr>';
+                }
+
+                ?>
               </tbody>
             </table>
             <!-- <div class="d-flex justify-content-end m-2">
