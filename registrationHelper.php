@@ -1,22 +1,21 @@
 <?php
-session_start();
 include "db_connection.php";
 
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$uname = $_POST['username'];
-$pass = $_POST['password'];
-$confpass = $_POST['confirmpassword'];
-$email = $_POST['email'];
-$contactNumber = $_POST['contactNumber'];
-$postalAddress = $_POST['postalAddress'];
+$title = $_POST['title'];
+$firstName = $_POST['fname'];
+$lastName = $_POST['lname'];
+$fullName = $_POST['fullName'];
 $nic = $_POST['nic'];
-$occupation = $_POST['occupation'];
-$gender = $_POST['gender'];
-$dob = $_POST['dob'];
+$email = $_POST['email'];
+$mobileNumber = $_POST['mobileNumber'];
+$postalAddress = $_POST['postalAddress'];
+$dateOfBirth = $_POST['dob'];
+$password = $_POST['password'];
+$confirmPassword = $_POST['confirmpassword'];
 
 
-if (empty($fname)) {
+
+/* if (empty($fname)) {
     header("Location: register.php?error=First name is required");
     exit();
 }else if (empty($lname)) {
@@ -58,18 +57,24 @@ if (empty($fname)) {
 } else if (empty($confpass)) {
     header("Location: register.php?error=Confirm password is required");
     exit();
-} else if ($pass!=$confpass) {
+} else*/ 
+
+if ($password!=$confirmPassword) {
     header("Location: register.php?error=Passwords are not same");
     exit();
-}else {
-    $sql = "INSERT into users (username, email, password, first_name, last_name, contactNumber, postalAddress, nic, occupation, gender, dob) VALUES (
-        '$uname','$email','$pass','$fname','$lname', '$contactNumber', '$postalAddress', '$nic', '$occupation', '$gender', '$dob'
+}else { 
+    $sql = "INSERT into users (title, first_name, last_name, full_name, nic, email_address, mobile_number, postal_address, date_of_birth, password) VALUES (
+        '$title','$firstName','$lastName','$fullName','$nic', '$email', '$mobileNumber', '$postalAddress', '$dateOfBirth', '$password'
     );";
 
-    mysqli_query($connect, $sql);
-    $_SESSION['fname'] = $fname;
-    header("Location: reg_done.php");
-    exit();
+    if (mysqli_query($connect, $sql)){
+        header("Location: reg_done.php");
+        exit();
+    }else{
+        echo "Database Error!";
+    }
+
+    
 
 }
 ?>

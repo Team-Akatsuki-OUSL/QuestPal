@@ -3,7 +3,7 @@ session_start();
 
 include "db_connection.php";
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
+if (isset($_POST['emailAddress']) && isset($_POST['password'])) {
     function validate($data)
     {
         $data = trim($data);
@@ -12,16 +12,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         return $data;
     }
 
-    $uname = validate($_POST['username']);
+    $email = validate($_POST['emailAddress']);
     $pass = validate($_POST['password']);
-    if (empty($uname)) {
-        header("Location: login.php?error=User Name is required");
+    if (empty($email)) {
+        header("Location: login.php?error=Email is required");
         exit();
     } else if (empty($pass)) {
         header("Location: login.php?error=Password is required");
         exit();
     } else {
-        $sql = "SELECT * FROM users WHERE username='$uname' AND password='$pass'";
+        $sql = "SELECT * FROM users WHERE email_address='$email' AND password='$pass'";
 
         $result = mysqli_query($connect, $sql);
 
@@ -29,37 +29,22 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
             $row = mysqli_fetch_assoc($result);
 
-            if ($row['username'] == $uname && $row['password'] == $pass) {
-
-                echo "Logged in!";
-                
-
-                $_SESSION['username'] = $row['username'];
-
-                $_SESSION['fname'] = $row['first_name'];
-                $_SESSION['lname'] = $row['last_name'];
-    
-
+            if ($row['email_address'] == $email && $row['password'] == $pass) {
+                echo "Logged in!";           
+                $_SESSION['nic'] = $row['nic'];
                 header("Location: dashboard.php");
-
                 exit();
             } else {
-
                 header("Location: login.php?error=Incorect User name or password");
-
                 exit();
             }
         } else {
-
             header("Location: login.php?error=Incorect User name or password");
-
             exit();
         }
     }
 } else {
-
     header("Location: login.php");
-
     exit();
 }
 

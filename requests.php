@@ -2,11 +2,11 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['nic'])) {
 
   include "db_connection.php";
-  $nic = "200116403146";
-  $sql = "SELECT request_id, CONCAT(first_name, ' ', last_name ) as name, title, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic";
+  $nic = $_SESSION['nic'];
+  $sql = "SELECT request_id, full_name, requests.title, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic";
   $result = $connect->query($sql);
 
 ?>
@@ -185,7 +185,7 @@ if (isset($_SESSION['username'])) {
                   while ($row = $result->fetch_assoc()) {
                     echo '<tr>
                                         <td>' . $row["request_id"] . '</td>
-                                        <td>' . $row["name"] . '</td>
+                                        <td>' . $row["full_name"] . '</td>
                                         <td>' . $row["title"] . '</td>
                                         <td>' . $row["district"] . '</td>
                                         <td>' . $row["category"] . '</td>

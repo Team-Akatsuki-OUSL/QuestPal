@@ -16,7 +16,7 @@
       <div class="col-lg-6 p-0">
         <div class="d-flex flex-column align-items-center justify-content-center m-0 p-0 logo-unit" >
           <img src="images/logo.png" width="100px" alt="">
-          <h2 class="mt-2">QuestPal</h2>
+          <h2 class="mt-2 text-white">QuestPal</h2>
         </div>
       </div>
       <div class="col-lg-6 p-0">
@@ -30,7 +30,7 @@
               <?php } ?>
               <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupSelect01">Title</label>
-                <select class="form-select" id="inputGroupSelect01" name="gender">
+                <select class="form-select" id="inputGroupSelect01" name="title" required>
                   <option value="" selected disabled hidden>Select</option>
 
                   <option value="Rev.">Rev.</option>
@@ -42,48 +42,48 @@
 
               <div class="row g-2">
                 <div class="col form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput1" name="fname" placeholder="name@example.com">
+                  <input type="text" class="form-control" id="floatingInput1" name="fname" placeholder=" " required>
                   <label for="floatingInput1">First Name</label>
                 </div>
                 <div class="col form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput2" name="lname" placeholder="name@example.com">
+                  <input type="text" class="form-control" id="floatingInput2" name="lname" placeholder=" " required>
                   <label for="floatingInput2">Last Name</label>
                 </div>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="username" placeholder="name@example.com">
+                <input type="text" class="form-control" id="floatingInput" name="fullName" placeholder=" " required>
                 <label for="floatingInput">Full Name</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="nic" placeholder="name@example.com">
+                <input type="text" class="form-control" id="floatingInput" name="nic" placeholder=" " required>
                 <label for="floatingInput">NIC</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingInput" name="email" placeholder=" " required>
                 <label for="floatingInput">Email address</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="contactNumber" placeholder="name@example.com">
+                <input type="number" class="form-control" id="floatingInput" name="mobileNumber" placeholder=" " required>
                 <label for="floatingInput">Mobile Number</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="postalAddress" placeholder="name@example.com">
+                <input type="text" class="form-control" id="floatingInput" name="postalAddress" placeholder=" " required>
                 <label for="floatingInput">Postal Address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="date" class="form-control" id="floatingInput" name="dob" placeholder="name@example.com">
+                <input type="date" class="form-control" id="floatingInput" name="dob" placeholder=" " required>
                 <label for="floatingInput">Date of Birth</label>
               </div>
 
               <div class="row g-2">
 
                 <div class="col form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingInput" name="password" placeholder="name@example.com">
+                  <input type="password" class="form-control" id="floatingInput" name="password" placeholder=" " required>
                   <label for="floatingInput">Password</label>
                 </div>
                 <div class="col form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingInput" name="confirmpassword" placeholder="name@example.com">
+                  <input type="password" class="form-control" id="floatingInput" name="confirmpassword" placeholder=" " required>
                   <label for="floatingInput">Confirm password</label>
                 </div>
               </div>
