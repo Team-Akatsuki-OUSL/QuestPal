@@ -2,10 +2,10 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['nic'])) {
 
     include "db_connection.php";
-    $nic = "200116403146";
+    $nic = $_SESSION['nic'];
     $sql = "SELECT request_id, title, category FROM requests WHERE requester_id='$nic'";
     $result = $connect->query($sql);
 
@@ -31,7 +31,8 @@ if (isset($_SESSION['username'])) {
         <script>
             tinymce.init({
                 selector: '#desc',
-                placeholder: "If you type more, you will get more attraction"
+                placeholder: "If you type more, you will get more attraction",
+                entity_encoding: "raw"
             });
         </script>
 

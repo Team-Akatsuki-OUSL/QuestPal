@@ -2,18 +2,21 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['nic'])) {
 
     include "db_connection.php";
-    $nic = "200116403146";
+    $nic = $_SESSION['nic'];
     $request_id = $_GET['request_id'];
-    $sql = "SELECT request_id, CONCAT(first_name, ' ', last_name ) as name, title, description, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic WHERE request_id=$request_id";
+    $sql = "SELECT request_id, full_name, requests.title, description, postal_address, email_address, mobile_number, category, district FROM requests INNER JOIN users ON requests.requester_id=users.nic WHERE request_id=$request_id";
     $result = $connect->query($sql);
     $row = $result->fetch_assoc();
     
     $request_id = $row["request_id"];
-    $name = $row["name"] ;
+    $name = $row["full_name"] ;
     $title = $row["title"] ;
+    $email = $row["email_address"] ;
+    $mobileNumber = $row["mobile_number"] ;
+    $address = $row["postal_address"] ;
     $description = $row["description"] ;
     $district = $row["district"];
     $category = $row["category"];
@@ -103,17 +106,27 @@ if (isset($_SESSION['username'])) {
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="m-2 p-4"> 
-                                        <p class="mb-2"><strong><?php echo $title ?></strong></p>
-                                        <p class="mb-4"><?php echo $title ?></p>
-                                        <p class="mb-2"><strong>Category: </strong><?php echo $category ?></p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                        <p class="mb-2 "><strong>Category: </strong><?php echo $category ?></p>
                                         <p class="mb-2"><strong>District: </strong><?php echo $district ?></p>
+                                        </div>
+                                        <hr>
+                                        <p class="mb-4"><?php echo $description ?></p>
+                                        
                                     </div>
-                                    <?php echo $description ?>
+                                    
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="m-2 p-4 text-bg-lignt border border-1 rounded rounded-3">
+                                    <div class="m-2 p-4 text-bg-secondary border border-1 rounded rounded-3">
                                         <h3 class="text-center mb-5">Contact Details</h3>
-                                        <p class="mb-1"><strong>Name: </strong> <?php echo $name; ?></p>
+                                        <p class="mb-3"><strong>Name: </strong> <?php echo $name; ?></p>
+                                        <p class="mb-3"><strong>Address: </strong> <?php echo $address; ?></p>
+                                        <p class="mb-3"><strong>Email: </strong> <?php echo $email; ?></p>
+                                        <p class="mb-3"><strong>Mobile: </strong> <?php echo $mobileNumber; ?></p>
+                                        <div class="d-flex justify-content-around mt-4">
+                                            <button class="btn btn-primary"><a href="tel:+94<?php echo $mobileNumber;?>">Call</a></button>
+                                            <button class="btn btn-primary"><a href="mailto:<?php echo $email;?>">Email</a></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

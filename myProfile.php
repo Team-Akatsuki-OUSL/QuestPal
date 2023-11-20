@@ -2,7 +2,13 @@
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['nic'])) {
+
+  include "db_connection.php";
+  $nic = $_SESSION['nic'];
+  $sql = "SELECT * FROM users WHERE nic=$nic";
+  $result = $connect->query($sql);
+  $row = $result->fetch_assoc();
 
 ?>
 
@@ -20,7 +26,11 @@ if (isset($_SESSION['username'])) {
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/sidebar.css">
     <script src="js/sidebar.js" defer></script>
+    <script src="js/editProfile.js" defer></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js" defer></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js" defer></script>
 
 
   </head>
@@ -75,76 +85,8 @@ if (isset($_SESSION['username'])) {
 
         <div class="container m-3  d-block mx-auto">
           <div class=" ">
-            <h3>Requests </h3>
+            <h3>My Profile </h3>
             <hr>
-            <div class="p-2 px-4 rounded rounded-3" style="background-color: #4DA3FF;">
-
-              <form>
-                <!-- choose location-->
-                <div class="row mt-3">
-                  <div class="col">
-                    <div class="input-group mb-3">
-                      <label class="input-group-text" for="inputGroupSelect01">District</label>
-                      <select class="form-select" id="inputGroupSelect01" name="district">
-                        <option value="Colombo">Colombo</option>
-                        <option value="Gampaha">Gampaha</option>
-                        <option value="Kalutara">Kalutara</option>
-                        <option value="Kandy">Kandy</option>
-                        <option value="Matale">Matale</option>
-                        <option value="Nuwara Eliya">Nuwara Eliya</option>
-                        <option value="Galle">Galle</option>
-                        <option value="Matara">Matara</option>
-                        <option value="Hambantota">Hambantota</option>
-                        <option value="Jaffna">Jaffna</option>
-                        <option value="Kilinochchi">Kilinochchi</option>
-                        <option value="Mannar">Mannar</option>
-                        <option value="Vavuniya">Vavuniya</option>
-                        <option value="Mullaitivu">Mullaitivu</option>
-                        <option value="Batticaloa">Batticaloa</option>
-                        <option value="Ampara">Ampara</option>
-                        <option value="Trincomalee">Trincomalee</option>
-                        <option value="Kurunegala">Kurunegala</option>
-                        <option value="Puttalam">Puttalam</option>
-                        <option value="Anuradhapura">Anuradhapura</option>
-                        <option value="Polonnaruwa">Polonnaruwa</option>
-                        <option value="Badulla">Badulla</option>
-                        <option value="Moneragala">Moneragala</option>
-                        <option value="Ratnapura">Ratnapura</option>
-                        <option value="Kegalle">Kegalle</option>
-                      </select>
-                    </div>
-                  </div>
-
-
-                  <!--category-->
-                  <div class="col">
-                    <div class="input-group mb-3">
-                      <label class="input-group-text" for="inputGroupSelect01">Category</label>
-                      <select class="form-select" id="inputGroupSelect01" name="category">
-                        <option value="Health">Health</option>
-                        <option value="Education">Education</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Agriculture">Agriculture</option>
-                        <option value="Finance">Finance</option>
-                      </select>
-                    </div>
-                  </div>
-
-
-
-                  <!-- discard-->
-                  <div class="col-auto">
-                    <div class="d-flex justify-content-end">
-                      <button type="button" class="btn btn-secondary">Search</button>
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </form>
-            </div>
-
           </div>
         </div>
 
@@ -152,48 +94,75 @@ if (isset($_SESSION['username'])) {
         <section>
 
           <div class="container ">
-            <div class="row ">
-              <div class="d-flex justify-content-between p-2 ">
+            <div class="row">
+              <div class="col-lg-8 px-5 py-4">
+                <form method="POST" action="updateProfileHelper.php" id="update-profile">
+                  <?php if (isset($_GET['error'])) { ?>
 
-                <h5 class="mx-2"></h5>
-                <h6 class="mx-2">Number of Results: 0</h6>
+                    <p class="error w-100 text-bg-danger" style="padding: 10px 25px; "><?php echo $_GET['error']; ?></p>
+
+                  <?php } ?>
+                  <div class="input-group mb-3">
+                    <label class="input-group-text" for="titleSelect">Title</label>
+                    <select class="form-select inputField" id="titleSelect" name="newTitle" disabled required>
+                      <option value="<?php echo $row['title'] ?>" selected hidden><?php echo $row['title'] ?></option>
+
+                      <option value="Rev.">Rev.</option>
+                      <option value="Mr.">Mr.</option>
+                      <option value="Ms.">Ms.</option>
+                      <option value="Mrs.">Mrs.</option>
+                    </select>
+                  </div>
+
+                  <div class="row g-2">
+                    <div class="col form-floating mb-3">
+                      <input type="text" class="form-control inputField" id="floatingInput1" name="fname" placeholder=" " value="<?php echo $row['first_name'] ?>" disabled>
+                      <label for="floatingInput1">First Name</label>
+                    </div>
+                    <div class="col form-floating mb-3">
+                      <input type="text" class="form-control inputField" id="floatingInput2" name="lname" placeholder=" " value="<?php echo $row['last_name'] ?>" disabled>
+                      <label for="floatingInput2">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control inputField" id="floatingInput" name="fullName" placeholder=" " value="<?php echo $row['full_name'] ?>" disabled>
+                    <label for="floatingInput">Full Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control inputField" id="floatingInput" name="nic" placeholder=" " value="<?php echo $row['nic'] ?>" disabled>
+                    <label for="floatingInput">NIC</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control inputField" id="floatingInput" name="email" placeholder=" " value="<?php echo $row['email_address'] ?>" disabled>
+                    <label for="floatingInput">Email address</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control inputField" id="floatingInput" name="mobileNumber" placeholder=" " value="<?php echo $row['mobile_number'] ?>" disabled>
+                    <label for="floatingInput">Mobile Number</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control inputField" id="floatingInput" name="postalAddress" placeholder=" " value="<?php echo $row['postal_address'] ?>" disabled>
+                    <label for="floatingInput">Postal Address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="date" class="form-control inputField" id="floatingInput" name="dob" placeholder=" " value="<?php echo $row['date_of_birth'] ?>" disabled>
+                    <label for="floatingInput">Date of Birth</label>
+                  </div>
+
+
+                  <div class="col form-floating mb-3">
+                    <input type="password" class="form-control inputField" id="floatingInput" name="password" placeholder=" " value="<?php echo $row['password'] ?>" disabled>
+                    <label for="floatingInput">Password</label>
+                  </div>
+
+                </form>
+              </div>
+              <div class="col-lg-4 px-5 py-4">
+                <button class="btn btn-primary d-block w-100 mb-3" id="btnEdit" onclick="toggleInput()">Edit</button>
+                <button class="btn btn-primary d-block w-100 mb-3" id="btnUpdate" type="submit" form="update-profile" disabled>Update</button>
               </div>
             </div>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Subject</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Kavishka Prasad</td>
-                  <td>Rice</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-                <tr>
-                  <td>Asanka Madushanka</td>
-                  <td>Medecine</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-                <tr>
-                  <td>Kavishka Prasad</td>
-                  <td>Rice</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-                <tr>
-                  <td>Asanka Madushanka</td>
-                  <td>Medecine</td>
-                  <td><button class="btn btn-primary">View</button></td>
-                </tr>
-
-              </tbody>
-            </table>
-            <!-- <div class="d-flex justify-content-end m-2">
-              <button class="btn btn-secondary">View more results</button>
-            </div> -->
           </div>
 
         </section>

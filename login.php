@@ -17,7 +17,7 @@
       <div class="col-lg-6">
         <div class="d-flex flex-column justify-content-center align-items-center logo-unit">
           <img src="images/logo.png" width="100px" alt="">
-          <h2 class="mt-2">QuestPal</h2>
+          <h2 class="mt-2 text-white">QuestPal</h2>
         </div>
       </div>
       <div class="col-lg-6 ">
@@ -30,12 +30,12 @@
 
                 <?php } ?>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
-                  <label for="floatingInput">Username</label>
+                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="emailAddress" required>
+                  <label for="floatingInput">Email Address</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="password">
+                  <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="password" required>
                   <label for="floatingInput">Password</label>
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary d-block mx-auto mt-5">Login</button>
