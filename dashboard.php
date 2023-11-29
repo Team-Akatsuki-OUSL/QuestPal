@@ -28,6 +28,8 @@ if (isset($_SESSION['nic'])) {
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <script src="tinymce/tinymce.min.js"></script>
         <link rel="stylesheet" href="css/sidebar.css">
+        <link rel="stylesheet" href="css/dashboard.css">
+        
         <script>
             tinymce.init({
                 selector: '#desc',
@@ -92,11 +94,7 @@ if (isset($_SESSION['nic'])) {
                     </div>
 
                     <div class="boxes ">
-                        <div class="box box2 mx-2">
-                            <i class="uil uil-favorite"></i>
-                            <span class="text">Favourites</span>
-                            <span class="number">0</span>
-                        </div>
+                    
                         <div class="box box1 mx-2">
                             <i class="uil uil-receipt"></i>
                             <span class="text">My Requests</span>
@@ -212,7 +210,6 @@ if (isset($_SESSION['nic'])) {
                         <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="col-2">Request ID</th>
                                     <th scope="col" class="col-4">Title</th>
                                     <th scope="col" class="col-3">Category</th>
                                     <th scope="col" class="col-3"></th>
@@ -225,15 +222,11 @@ if (isset($_SESSION['nic'])) {
                                     // output data of each row
                                     while ($row = $result->fetch_assoc()) {
                                         echo '<tr>
-                                        <td>' . $row["request_id"] . '</td>
                                         <td>' . $row["title"] . '</td>
                                         <td>' . $row["category"] . '</td>
                                         <td>
-                                            <div>
-                                                <button class="btn btn-primary mx-2"><a href="viewRequest.php?request_id=' . $row["request_id"] . '">View</a></button>
-                                                <button class="btn btn-success mx-2">Update</button>
-                                                <button class="btn btn-danger mx-2">Delete</button>
-                                            </div>
+                                            <button class="btn  btn-outline-primary mx-2" onclick="window.location.href=\'viewMyRequest.php?request_id=' . $row["request_id"] . '\';"><i class="uil uil-eye"> </i>View</button>
+                                                
                                         </td></tr>';
                                     }
                                 } else {

@@ -125,19 +125,19 @@ if (isset($_SESSION['nic'])) {
                                 </div>
                             </div>
                             <div class="col-lg-6 px-4">
-                                <form>
+                                <form method="POST" action="sendMailHelper.php">
                                     <!-- 2 column grid layout with text inputs for the first and last names -->
                                     <div class="row mb-3 pt-4">
                                         <div class="col-md-6">
                                             <div class="">
                                                 <label class="form-label" for="form3Example1">First name</label>
-                                                <input type="text" id="form3Example1" class="form-control" />
+                                                <input type="text" id="form3Example1" class="form-control" name="first_name"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="">
                                                 <label class="form-label" for="form3Example2">Last name</label>
-                                                <input type="text" id="form3Example2" class="form-control" />
+                                                <input type="text" id="form3Example2" class="form-control" name="last_name"/>
                                             </div>
                                         </div>
                                     </div>
@@ -145,18 +145,18 @@ if (isset($_SESSION['nic'])) {
                                     <!-- Email input -->
                                     <div class="mb-3">
                                         <label class="form-label" for="form3Example3">Email address</label>
-                                        <input type="email" id="form3Example3" class="form-control" />
+                                        <input type="email" id="form3Example3" class="form-control" name="email_address"/>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="form3Example3">Subject</label>
-                                        <input type="text" id="form3Example3" class="form-control" />
+                                        <input type="text" id="form3Example3" class="form-control" name="subject"/>
                                     </div>
 
                                     <!-- Password input -->
                                     <div class=" mb-4">
                                         <label class="form-label" for="form3Example4">Message</label>
-                                        <textarea type="textarea" id="form3Example4" class="form-control" rows="6"></textarea>
+                                        <textarea type="textarea" id="form3Example4" class="form-control" rows="6" name="description"></textarea>
                                     </div>
 
 
@@ -203,7 +203,14 @@ if (isset($_SESSION['nic'])) {
 
 
         </section>
-
+        <script src="
+https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+"></script>
+        <script>
+            $(window).scroll(function() {
+                $('.top').toggleClass('scrolled', $(this).scrollTop() > 60);
+            })
+        </script> 
     </body>
 
     </html>

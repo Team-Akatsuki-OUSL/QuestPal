@@ -278,13 +278,12 @@
 
             <div class="d-block mx-4 mt-3">
               <p class="text-justify  ">We are a group of first-year students at the Open University studying a
-                Bachelor
-                of Software Engineering. We were instructed to do this under a suitable theme by a group of 4
-                members under the subject EEY4189-Software Design in Group. We worked hard to build QuestPal step by
-                step. This is our first project and we believe that maximum justice has been done.
-                QuestPal is a fundraising web application that is a completely free platform for helping each other.
-                We hope that our efforts to bring everyone together through QuestPal will be successful and provide
-                you with excellent service</p>
+                                    Bachelor
+                                    of Software Engineering. We were instructed to do this under a suitable theme under the subject EEY4189-Software Design in Group. We worked hard to build QuestPal step by
+                                    step. This is our first project and we believe that maximum justice has been done.
+                                    QuestPal is a fundraising web application that is a completely free platform for helping each other.
+                                    We hope that our efforts to bring everyone together through QuestPal will be successful and provide
+                                    you with excellent service</p>
             </div>
           </div>
           <div class="col-lg-4    mt-3">
@@ -293,10 +292,8 @@
                 <h2 class="text-center ">Team Akatsuki</h2>
                 <h6 class=" text-center ">
 
-                  T.D.K.L.C. Gunasekara <br>
                   W.I.S.D.P. Jansz<br>
-                  W.S. Nimesha<br>
-                  U.K.U.K. Shehan
+                  T.D.K.L.C. Gunasekara
 
                 </h6>
               </div>

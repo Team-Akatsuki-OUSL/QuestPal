@@ -191,7 +191,7 @@ if (isset($_SESSION['nic'])) {
                                         <td>' . $row["category"] . '</td>
                                         <td>
                                             <div>
-                                                <button class="btn btn-primary mx-2"><a href="viewRequest.php?request_id='.$row["request_id"].'">View</a></button>
+                                                <button class="btn btn-outline-primary mx-2" onclick="window.location.href=\'viewRequest.php?request_id=' . $row["request_id"] . '\';"><i class="uil uil-eye"> </i>View</button>
                                             </div>
                                         </td></tr>';
                   }
