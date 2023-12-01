@@ -253,9 +253,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
 <?php
 
 } else {
-
     header("Location: index.php");
-
     exit();
 }
 

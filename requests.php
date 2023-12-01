@@ -82,75 +82,6 @@ if (isset($_SESSION['nic'])) {
           <div class=" ">
             <h3>Requests </h3>
             <hr>
-            <div class="p-2 px-4 rounded rounded-3" style="background-color: #4DA3FF;">
-
-              <form>
-                <!-- choose location-->
-                <div class="row mt-3">
-                  <div class="col">
-                    <div class="input-group mb-3">
-                      <label class="input-group-text" for="inputGroupSelect01">District</label>
-                      <select class="form-select" id="inputGroupSelect01" name="district">
-                      <option value="" selected disabled hidden>Select</option>
-                        <option value="Colombo">Colombo</option>
-                        <option value="Gampaha">Gampaha</option>
-                        <option value="Kalutara">Kalutara</option>
-                        <option value="Kandy">Kandy</option>
-                        <option value="Matale">Matale</option>
-                        <option value="Nuwara Eliya">Nuwara Eliya</option>
-                        <option value="Galle">Galle</option>
-                        <option value="Matara">Matara</option>
-                        <option value="Hambantota">Hambantota</option>
-                        <option value="Jaffna">Jaffna</option>
-                        <option value="Kilinochchi">Kilinochchi</option>
-                        <option value="Mannar">Mannar</option>
-                        <option value="Vavuniya">Vavuniya</option>
-                        <option value="Mullaitivu">Mullaitivu</option>
-                        <option value="Batticaloa">Batticaloa</option>
-                        <option value="Ampara">Ampara</option>
-                        <option value="Trincomalee">Trincomalee</option>
-                        <option value="Kurunegala">Kurunegala</option>
-                        <option value="Puttalam">Puttalam</option>
-                        <option value="Anuradhapura">Anuradhapura</option>
-                        <option value="Polonnaruwa">Polonnaruwa</option>
-                        <option value="Badulla">Badulla</option>
-                        <option value="Moneragala">Moneragala</option>
-                        <option value="Ratnapura">Ratnapura</option>
-                        <option value="Kegalle">Kegalle</option>
-                      </select>
-                    </div>
-                  </div>
-
-
-                  <!--category-->
-                  <div class="col">
-                    <div class="input-group mb-3">
-                      <label class="input-group-text" for="inputGroupSelect01">Category</label>
-                      <select class="form-select" id="inputGroupSelect01" name="category">
-                      <option value="" selected disabled hidden>Select</option>
-                        <option value="Health">Health</option>
-                        <option value="Education">Education</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Agriculture">Agriculture</option>
-                        <option value="Finance">Finance</option>
-                      </select>
-                    </div>
-                  </div>
-
-
-
-                  <!-- discard-->
-                  <div class="col-auto">
-                    <div class="d-flex justify-content-end">
-                      <button type="button" class="btn btn-secondary">Search</button>
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </form>
-            </div>
 
           </div>
         </div>
@@ -202,9 +133,6 @@ if (isset($_SESSION['nic'])) {
                 ?>
               </tbody>
             </table>
-            <!-- <div class="d-flex justify-content-end m-2">
-              <button class="btn btn-secondary">View more results</button>
-            </div> -->
           </div>
 
         </section>
@@ -218,9 +146,7 @@ if (isset($_SESSION['nic'])) {
 <?php
 
 } else {
-
   header("Location: index.php");
-
   exit();
 }
 

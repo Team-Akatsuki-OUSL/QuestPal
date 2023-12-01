@@ -21,3 +21,5 @@ if (isset($_SESSION['nic'])) {
     header("Location: login.php");
     exit();
 }
+
+?>

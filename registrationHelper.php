@@ -14,51 +14,6 @@ $password = $_POST['password'];
 $confirmPassword = $_POST['confirmpassword'];
 
 
-
-/* if (empty($fname)) {
-    header("Location: register.php?error=First name is required");
-    exit();
-}else if (empty($lname)) {
-    header("Location: register.php?error=Last name is required");
-    exit();
-}else if(empty($uname)) {
-    header("Location: register.php?error=Username is required");
-    exit();
-}else if (!ctype_alnum($uname)) {
-    header("Location: register.php?error=Not a valid username");
-    exit();
-}else if (empty($email)) {
-    header("Location: register.php?error=Email is required");
-    exit();
-}else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: register.php?error=Not a valid email");
-    exit();
-}else if (empty($contactNumber)) {
-    header("Location: register.php?error=contact Number is required");
-    exit();
-}else if (empty($postalAddress)) {
-    header("Location: register.php?error=postal Address is required");
-    exit();
-}else if (empty($occupation)) {
-    header("Location: register.php?error=occupation is required");
-    exit();
-}else if (empty($nic)) {
-    header("Location: register.php?error=nic is required");
-    exit();
-}else if (empty($gender)) {
-    header("Location: register.php?error=gender is required");
-    exit();
-}else if (empty($dob)) {
-    header("Location: register.php?error=Date of Birth is required");
-    exit();
-} else if (empty($pass)) {
-    header("Location: register.php?error=Password is required");
-    exit();
-} else if (empty($confpass)) {
-    header("Location: register.php?error=Confirm password is required");
-    exit();
-} else*/ 
-
 if ($password!=$confirmPassword) {
     header("Location: register.php?error=Passwords are not same");
     exit();
@@ -68,10 +23,50 @@ if ($password!=$confirmPassword) {
     );";
 
     if (mysqli_query($connect, $sql)){
-        header("Location: reg_done.php");
-        exit();
+        echo '
+        <html>
+
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/bootstrap.bundle.min.js" defer></script>
+    </head>
+
+    <body>
+        <div class="container-fluid text-bg-light">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
+            <img src="images/success.png" alt="" width="100px">
+                <h3 class="mt-4">Registration Successful</h3>
+                <p>Please login to the system.</p>
+                <p class="mt-3">Redirecting...</p>
+            </div>
+        </div>
+    </body>
+
+    </html>
+        ';
+        header( "refresh:4; url=login.php" );
     }else{
-        echo "Database Error!";
+        echo '
+        <html>
+
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/bootstrap.bundle.min.js" defer></script>
+    </head>
+
+    <body>
+        <div class="container-fluid text-bg-light">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
+            <img src="images/error.png" alt="" width="100px">
+                <h3 class="mt-4 text-center">Database error occurred. <br> Please try again later.</h3>
+                <p class="mt-3">Redirecting...</p>
+            </div>
+        </div>
+    </body>
+
+    </html>
+        ';
+        header( "refresh:4; url=index.php" );
     }
 
     

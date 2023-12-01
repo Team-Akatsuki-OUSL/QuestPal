@@ -26,7 +26,6 @@ if (isset($_SESSION['nic'])) {
     </head>
 
     <body style="background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../images/hnd.jpg');  background-size:cover; background-position: center; min-height: 100vh;">
-        <!--Go back button-->
         <nav>
             <div class="logo-name">
                 <div class="logo-image">
@@ -117,51 +116,23 @@ if (isset($_SESSION['nic'])) {
                         <div class="row d-flex justify-content-center pt-1">
                             <div class="col-lg-6 px-4 mb-5">
                                 <p class="mt-4">Want to get in touch with us? Please feel free to contact us by filling this form.
-                                    Also you can mail us directly to the following email address. We would be happy to answer your questions.
+                                    We would be happy to answer your questions.
                                 </p>
-                                <div class="mt-4 ms-3">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <span>admin.questpal@gmail.com</span>
-                                </div>
+                                
                             </div>
                             <div class="col-lg-6 px-4">
-                                <form method="POST" action="sendMailHelper.php">
-                                    <!-- 2 column grid layout with text inputs for the first and last names -->
-                                    <div class="row mb-3 pt-4">
-                                        <div class="col-md-6">
-                                            <div class="">
-                                                <label class="form-label" for="form3Example1">First name</label>
-                                                <input type="text" id="form3Example1" class="form-control" name="first_name"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="">
-                                                <label class="form-label" for="form3Example2">Last name</label>
-                                                <input type="text" id="form3Example2" class="form-control" name="last_name"/>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <form method="POST" action="sendMailHelper.php">                                
 
-                                    <!-- Email input -->
-                                    <div class="mb-3">
-                                        <label class="form-label" for="form3Example3">Email address</label>
-                                        <input type="email" id="form3Example3" class="form-control" name="email_address"/>
-                                    </div>
-
-                                    <div class="mb-3">
+                                    <div class="mb-3 pt-4">
                                         <label class="form-label" for="form3Example3">Subject</label>
-                                        <input type="text" id="form3Example3" class="form-control" name="subject"/>
+                                        <input type="text" id="form3Example3" class="form-control" name="subject" required/>
                                     </div>
 
-                                    <!-- Password input -->
                                     <div class=" mb-4">
                                         <label class="form-label" for="form3Example4">Message</label>
-                                        <textarea type="textarea" id="form3Example4" class="form-control" rows="6" name="description"></textarea>
+                                        <textarea type="textarea" id="form3Example4" class="form-control" rows="6" name="description" required></textarea>
                                     </div>
 
-
-
-                                    <!-- Submit button -->
                                     <button type="submit" class="btn btn-primary btn-block mb-4">
                                         Submit
                                     </button>
@@ -220,7 +191,6 @@ https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
 } else {
 
     header("Location: index.php");
-
     exit();
 }
 
